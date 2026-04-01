@@ -1,0 +1,13 @@
+{
+  "name": "test-yourself-e2e",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "cucumber-js",
+    "test:headed": "cucumber-js --parallel 1"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^10.0.1",
+    "@playwright/test": "^1.40.0",
+    "typescript": "^5.3.3"
+  }
+}

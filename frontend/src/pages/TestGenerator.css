@@ -1,0 +1,23 @@
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.button-group {
+  display: flex;
+  gap: 15px;
+  justify-content: flex-end;
+  margin-top: 30px;
+}
+
+textarea {
+  resize: vertical;
+  font-family: inherit;
+}
+
+h2 {
+  color: #333;
+  margin-bottom: 30px;
+  font-size: 2rem;
+}
