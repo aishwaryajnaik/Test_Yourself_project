@@ -66,3 +66,8 @@ npm test
 
 MIT
 
+Sample Working Result:
+
+<img width="1916" height="1012" alt="image" src="https://github.com/user-attachments/assets/cd391596-f71c-41f0-b89b-543362ff4246" />
+
+<img width="1915" height="1015" alt="image" src="https://github.com/user-attachments/assets/f64581a5-7b4f-4a6f-b4e4-3b5be8e990af" />
