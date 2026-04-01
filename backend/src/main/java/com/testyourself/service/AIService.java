@@ -20,11 +20,19 @@ public class AIService {
     
     @Value("${openai.api.model}")
     private String model;
+
+    @Value("${openai.api.mock:true}")
+    private boolean mockMode;
     
     private final OkHttpClient client = new OkHttpClient();
     private final ObjectMapper objectMapper = new ObjectMapper();
     
     public String generateQuestions(String topic, String content, int count, String difficulty) {
+        if (mockMode) {
+            log.warn("Mock mode enabled — returning fake AI response");
+            return buildMockResponse(topic, count);
+        }
+
         String prompt = buildPrompt(topic, content, count, difficulty);
         
         if (apiKey == null || apiKey.isBlank()) {
@@ -69,6 +77,22 @@ public class AIService {
         }
     }
     
+    private String buildMockResponse(String topic, int count) {
+        StringBuilder sb = new StringBuilder("[");
+        for (int i = 1; i <= count; i++) {
+            if (i > 1) sb.append(",");
+            sb.append(String.format("""
+                {
+                  "questionText": "Mock question %d about %s?",
+                  "options": ["Option A", "Option B", "Option C", "Option D"],
+                  "correctAnswer": "Option A",
+                  "explanation": "This is a mock explanation for question %d."
+                }""", i, topic, i));
+        }
+        sb.append("]");
+        return sb.toString();
+    }
+
     private String buildPrompt(String topic, String content, int count, String difficulty) {
         StringBuilder prompt = new StringBuilder();
         prompt.append("Generate ").append(count).append(" multiple-choice questions about: ").append(topic);
