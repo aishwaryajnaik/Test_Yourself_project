@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "scripts": {
     "test:unit": "jest --testPathPattern=unit --runInBand",
-    "test:api": "jest --testPathPattern=api --runInBand",
-    "test:e2e": "cucumber-js",
-    "test:e2e:headed": "cucumber-js --parallel 1",
+    "test:api": "cucumber-js --name \".*API.*\" features/api-test.feature",
+    "test:e2e": "cucumber-js features/test-generation.feature",
+    "test:e2e:headed": "cucumber-js --parallel 1 features/test-generation.feature",
     "test": "npm run test:unit && npm run test:api && npm run test:e2e"
   },
   "devDependencies": {
